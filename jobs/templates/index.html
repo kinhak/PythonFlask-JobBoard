@@ -1,5 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Jobs</h1>
+<html>
+  <head>
+    <title>Job Board</title>
+  </head>
+  <body>
+    <div class="container top">
+      <div class="content">
+        {% block content %}
+          {{ show_jobs(jobs) }}
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
 {% endblock %}
