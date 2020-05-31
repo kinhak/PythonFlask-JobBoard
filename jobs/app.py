@@ -39,5 +39,13 @@ def jobs():
     print(jobs)
     return render_template("index.html",jobs=jobs)
 
+
+@app.route("/job/<job_id>")
+def job(job_id):
+    #query = 'SELECT job.id, job.title, job.description, job.salary, employer.id as employer_id, employer.name as employer_name FROM job JOIN employer ON employer.id = job.employer_id'
+    job = execute_sql(sql='SELECT job.id, job.title, job.description, job.salary, employer.id as employer_id, employer.name as employer_name FROM job JOIN employer ON employer.id = job.employer_id WHERE job.id = ?',single=True)
+    print(job)
+    return render_template("job.html",job=job)
+
 if __name__ == "__main__":
     app.run()
